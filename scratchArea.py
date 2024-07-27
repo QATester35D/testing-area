@@ -1,16 +1,20 @@
 #######################################################################################################
-# Working through various concepts
+# This is a scratch area to work through various concepts.
+# If a common concept is coded, then it is moved to a separate file if deemed worth separating.
 #######################################################################################################
 import time
 
+#################################################################################
 # Removing spaces from a string using replace method
+#################################################################################
 wordToRemoveSpaces=" The string with spaces "
 print("The string being used to strip spaces out of is:",wordToRemoveSpaces)
 newWord=wordToRemoveSpaces.replace(" ","")
 print (f"The string has no spaces now and is one big word, it is: {newWord}.")
 time.sleep(1)
 
-# Largest subarray of 0's and 1's - gets the starting and ending indexes of the largest 
+#######################################################################################################
+# Largest subarray with equal number of 0s and 1s - gets the starting and ending indexes of the largest 
 # subarray with equal number of 0s and 1s. Also returns the size of such subarray.
 def findLargestSubArray(arr, n):
     sum = 0
