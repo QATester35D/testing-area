@@ -1,8 +1,9 @@
 #################################################################
 # Multiple ways to check if a word is a palindrome
-#################################################################
+###############################################################################################
 # Version 1 - strip out space and compare first and last, working inward
-#################################################################
+# Note that if a space has to be stripped out, then it is two words and not truly a Palindrome
+###############################################################################################
 def isThisAPalindrome(teststr):  
     lowerCaseWord=str.lower(teststr)
     newLowerCaseWord=''.join(filter(str.isalnum, lowerCaseWord))
@@ -36,11 +37,11 @@ def isPalindrome(string):
         return "The string is not a palindrome." 
  
 #Enter input string 
-string = input ("Enter string: ")
+string = input ("Is this a Palindrome? Using the reverse string index operator - Enter a string: ")
 print(isPalindrome(string))
 
 #################################################################
-# Version 2 - using the reversed and join methods
+# Version 3 - using the reversed and join methods
 #################################################################
 def isPalindrome(string):
     revstr=''.join(reversed(string))
@@ -50,5 +51,5 @@ def isPalindrome(string):
         return "The string is not a palindrome."
  
 #Enter input string
-string = input ("Enter string: ")
+string = input ("Is this a Palindrome? Using the \"reversed\" method - Enter a string: ")
 print(isPalindrome(string))

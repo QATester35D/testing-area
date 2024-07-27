@@ -1,11 +1,14 @@
 #######################################################################################################
 # Working through various concepts
 #######################################################################################################
-# Removing spaces from a word using replace method
-wordToRemoveSpaces=" The string with spaces "
-newWord=wordToRemoveSpaces.replace(" ","")
-print (newWord)
+import time
 
+# Removing spaces from a string using replace method
+wordToRemoveSpaces=" The string with spaces "
+print("The string being used to strip spaces out of is:",wordToRemoveSpaces)
+newWord=wordToRemoveSpaces.replace(" ","")
+print (f"The string has no spaces now and is one big word, it is: {newWord}.")
+time.sleep(1)
 # Largest subarray of 0's and 1's - gets the starting and ending indexes of the largest 
 # subarray with equal number of 0s and 1s. Also returns the size of such subarray.
 def findLargestSubArray(arr, n):
