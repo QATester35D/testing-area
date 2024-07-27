@@ -2,7 +2,13 @@ import time
 #################################################################################
 # Working with stacks - A stack is a data structure that can hold many elements.
 # In python you would use a list as an array for stacks
-# LIFO and FIFO
+# Stacks use a LIFO approach
+# Using:
+# - Push: Adds a new element on the stack.
+# - Pop: Removes and returns the top element from the stack.
+# - Peek: Returns the top element on the stack.
+# - isEmpty: Checks if the stack is empty.
+# - Size: Finds the number of elements in the stack.
 #################################################################################
 #################################################################################
 # A better approach to working with stacks (really lists) in python using classes
