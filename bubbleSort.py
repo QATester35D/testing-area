@@ -10,7 +10,8 @@ import time
 ##############
 #Bubble sort
 ##############
-my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+# my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+my_array = [2,12,4,15,3]
 
 n = len(my_array)
 for i in range(n-1):
@@ -23,8 +24,8 @@ time.sleep(1)
 #######################################################################################################
 #Bubble sort - swapping improvement to exit after encountering one run with no swapping, so we're done
 #######################################################################################################
-my_array = [7, 3, 9, 12, 11]
-
+# my_array = [7, 3, 9, 12, 11]
+my_array = [2,12,4,15,3]
 n = len(my_array)
 for i in range(n-1):
     swapped = False

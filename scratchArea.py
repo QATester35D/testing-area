@@ -5,6 +5,40 @@
 import time
 
 #################################################################################
+# 
+#################################################################################
+
+
+# time.sleep(1)
+
+#################################################################################
+bubbleArrayList=[2,12,4,15,3]
+print("The starting list is: ",bubbleArrayList)
+listCounter=0
+looping = 0
+lengthOfList=len(bubbleArrayList)
+for i in range(lengthOfList-1):
+    swapped=False
+    for j in range(lengthOfList-i-1):
+        currentVal=bubbleArrayList[j]
+        nextValue=bubbleArrayList[j+1]
+        if (currentVal > nextValue):
+            bubbleArrayList[j]=nextValue
+            bubbleArrayList[j+1]=currentVal
+            swapped=True
+    if not swapped:
+        break
+print("The sorted list is now: ",bubbleArrayList)
+time.sleep(1)
+#################################################################################
+#STDIN and STDOUT 
+n = int(input("Enter in a number: "))        # Reading input from STDIN
+s = input("Enter in a string: ")             # Reading input from STDIN
+n=n*2
+print(n)                # Writing output to STDOUT
+print(s)                # Writing output to STDOUT
+time.sleep(1)
+#################################################################################
 # Removing spaces from a string using replace method
 #################################################################################
 wordToRemoveSpaces=" The string with spaces "
