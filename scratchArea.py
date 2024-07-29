@@ -5,11 +5,50 @@
 import time
 
 #################################################################################
-# 
+# Messing with scope
+#################################################################################
+x="John"
+def myfunc1(x):
+  x = "Jane"
+  def myfunc2():
+    nonlocal x
+    x = "hello"
+  myfunc2()
+  print(x)
+  return x
+
+print(myfunc1(x))
+print(x)
+
+time.sleep(1)
+#################################################################################
+# Iterators
 #################################################################################
 
+mytuple = ("apple", "banana", "cherry")
+myit = iter(mytuple)
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print("\n")
+mystr = "banana"
+myit = iter(mystr)
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
+print(next(myit))
 
-# time.sleep(1)
+mytuple = ("ham", "bacon", "sausage")
+for x in mytuple:
+  print(x)
+
+mystr = "holiday"
+for x in mystr:
+  print(x)
+
+time.sleep(1)
 
 #################################################################################
 bubbleArrayList=[2,12,4,15,3]
