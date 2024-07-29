@@ -3,7 +3,19 @@
 # If a common concept is coded, then it is moved to a separate file if deemed worth separating.
 #######################################################################################################
 import time
+import datetime
+#################################################################################
+# Date stuff
+#################################################################################
 
+x = datetime.datetime(2024, 5, 17, 17, 30, 5)
+print(x)
+
+# x = datetime.datetime.now()
+# print(x.year) #prints the year only
+# print(x.strftime("%A")) #prints the day of the week
+
+time.sleep(1)
 #################################################################################
 # Messing with scope
 #################################################################################
