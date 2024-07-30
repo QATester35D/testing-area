@@ -4,6 +4,35 @@
 #######################################################################################################
 import time
 import datetime
+import math
+
+#################################################################################
+# Power operator
+#################################################################################
+# Power operator: number ** exponent
+# pow() function
+square = pow(5, 2)
+print(square)
+# 25
+
+# The pow() function also receives a third argument: the modulo. The sign for modulo is %. This argument evaluates the remainder when a value is divided by another.
+#   For example, 5 % 2 gives 1 because 5 divided by 2 is 2, remainder 1.
+# Applying the modulo the pow() function looks like this:
+
+mod = pow(5, 2, 3)
+print(mod)
+## 1
+## 5 * 5 is 25
+## 25 % 3 is 1
+
+
+# math.pow() comes from Python's math module. This function is similar to the in-built pow() function
+# in usage and syntax, except that it has two differences:
+# - it only accepts two arguments: the base and the exponent
+# - it always returns a float number even when the raised number is a whole number.
+# - So, math.pow(5, 2) returns 25.0.
+print(math.pow(5, 2))
+
 #################################################################################
 # Date stuff
 #################################################################################
