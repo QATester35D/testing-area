@@ -5,6 +5,41 @@
 import time
 import datetime
 import math
+import re
+#########
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+
+time.sleep(1)
+#################################################################################
+# x=1
+# try:
+#   print(x)
+# except NameError:
+#   print("Variable x is not defined")
+# except:
+#   print("Something else went wrong")
+# else:
+#   print("Nothing went wrong")
+
+# time.sleep(1)
+
+# x = -1
+# if x < 0:
+#   raise Exception("Sorry, no numbers below zero")
+
+try:
+  f = open("c:\\temp\\demofile.txt","w")
+  try:
+    f.write("Lorum Ipsum")
+  except:
+    print("Something went wrong when writing to the file")
+  finally:
+    f.close()
+except:
+  print("Something went wrong when opening the file")
+
+time.sleep(1)
 
 #################################################################################
 # Power operator

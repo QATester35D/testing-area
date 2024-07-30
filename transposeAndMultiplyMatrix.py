@@ -10,6 +10,8 @@ def transpose_matrix(matrix):
 
 # Function to multiply two matrices
 def multiply_matrices(matrix1, matrix2):
+    print(len(matrix1[0]))
+    print(len(matrix2))
     if len(matrix1[0]) != len(matrix2):
         return "Matrices cannot be multiplied"
     
