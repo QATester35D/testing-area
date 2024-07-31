@@ -13,23 +13,22 @@ class GetEarthquakeInfo:
         if r.status_code != 200:
             print ("Problem connecting with USGS Earthquake API at https://earthquake.usgs.gov/earthquakes.")
             exit
-        # self.delete_file_if_exists(fname) #delete the file if it already exists so we don't append to it
-        # f = open(fname, "a")
         earthquakeList = []
         theJSON = json.loads(r.content)
-        # timeframeCountOfEarthquakes=i["count"] #do I want this value?
-        propertyList=["mag", "place", "felt", "tsunami", "sig", "type", "title"]
+        reportCount=theJSON["metadata"]["count"] #using this as the row count
+        propertyList=["mag", "place", "felt", "tsunami", "sig", "type", "title"] #A list of the properties I want
         propListLen=len(propertyList) #7
-        for i in theJSON["features"]:
-            rowCtr=0
-            for aRow in i["properties"]: #aRow is the actual property name
-                for aCol in range(propListLen):
-                    tempProp=propertyList[aCol]
+        for rowCtr in range (reportCount):
+            for i in theJSON["features"]:
+                propertyListCtr=0
+                row = []
+                for aRow in i["properties"]: #aRow is the actual property name
+                    tempProp=propertyList[propertyListCtr]
                     tempVal=i["properties"][tempProp]
                     if aRow == tempProp:
-                        #how to set row in 2D List
-                        earthquakeList.insert(aCol,tempVal) #this works but puts everything in one row
-            rowCtr+=1
+                        row.append(tempVal)
+                        propertyListCtr+=1
+                earthquakeList.append(row) #appending the entire row of data once to the list
         return earthquakeList
 
 #Calling a class to parse thru the API json and creates a text file of the info for the schedule

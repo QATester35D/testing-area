@@ -7,6 +7,22 @@ import datetime
 import math
 import re
 #########
+# Initialize an empty 2D list
+two_d_list = []
+
+# Dynamically add rows and columns
+for i in range(3):  # For example, add 3 rows
+    row = []
+    for j in range(4):  # For example, add 4 columns to each row
+        row.append(i * j)  # Populate with some values, e.g., the product of indices
+    two_d_list.append(row)
+
+# Print the dynamically created 2D list
+for row in two_d_list:
+    print(row)
+
+time.sleep(1)
+#########
 txt = "The rain in Spain"
 x = re.search("^The.*Spain$", txt)
 
