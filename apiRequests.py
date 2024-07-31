@@ -1,8 +1,6 @@
 import requests
 import json
-import os
-import sys
-from openpyxl import Workbook
+import time
 
 class GetEarthquakeInfo:
     def __init__(self,startDate, endDate):
@@ -17,28 +15,34 @@ class GetEarthquakeInfo:
             exit
         # self.delete_file_if_exists(fname) #delete the file if it already exists so we don't append to it
         # f = open(fname, "a")
-        earthquakeDictionary = {}
+        earthquakeList = []
         theJSON = json.loads(r.content)
-        for i in theJSON["Feature"]:
-            dateGameOfWeek = i["mag"] #"brand": "Ford",
-            dayAbbrev = i["place"]
-            dayNumberOfGames = i["felt"]
-            dayNumberOfGames = i["tsunami"]
-            dayNumberOfGames = i["sig"]
-            dayNumberOfGames = i["type"]
-            dayNumberOfGames = i["title"]
-            for aRow in i["games"]:
-                awayTeamName = aRow["awayTeam"]["placeName"]["default"]
-                awayTeamAbbrev = aRow["awayTeam"]["abbrev"]
-                homeTeamName = aRow["homeTeam"]["placeName"]["default"]
-                homeTeamAbbrev = aRow["homeTeam"]["abbrev"]
-                gameInfo=dateGameOfWeek+","+dayAbbrev+","+str(dayNumberOfGames)+","+awayTeamAbbrev+","+homeTeamAbbrev+'\n'
-        #         f.write(gameInfo)
-        # f.close()
+        # timeframeCountOfEarthquakes=i["count"] #do I want this value?
+        propertyList=["mag", "place", "felt", "tsunami", "sig", "type", "title"]
+        propListLen=len(propertyList) #7
+        for i in theJSON["features"]:
+            rowCtr=1
+            # propListColCtr=0
+            for aRow in i["properties"]: #aRow is the actual property name
+                for aCol in range(propListLen):
+                    tempProp=propertyList[aCol]
+                    tempVal=i["properties"][tempProp]
+                    if aRow == tempProp:
+                        # earthquakeList.append[rowCtr, aCol] = tempVal
+                        earthquakeList.append((rowCtr,aCol))=tempVal
+                        # earthquakeList[rowCtr, aCol] = ["place"]
+                        # earthquakeList[rowCtr, aCol] = ["felt"]
+                        # earthquakeList[rowCtr, aCol] = ["tsunami"]
+                        # earthquakeList[rowCtr, aCol] = ["sig"]
+                        # earthquakeList[rowCtr, aCol] = ["type"]
+                        # earthquakeList[rowCtr, aCol] = ["title"]
+            rowCtr+=1
+                # propListColCtr+=1
+        return earthquakeList
 
 #Calling a class to parse thru the API json and creates a text file of the info for the schedule
-startDate='2024-07-29'
-endDate='2024-07-29'
+startDate='2024-06-01'
+endDate='2024-06-02'
 a=GetEarthquakeInfo(startDate, endDate)
-a.getEarthquakeData()
-
+eqData=a.getEarthquakeData()
+time.sleep(1)
