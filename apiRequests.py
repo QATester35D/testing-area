@@ -21,23 +21,15 @@ class GetEarthquakeInfo:
         propertyList=["mag", "place", "felt", "tsunami", "sig", "type", "title"]
         propListLen=len(propertyList) #7
         for i in theJSON["features"]:
-            rowCtr=1
-            # propListColCtr=0
+            rowCtr=0
             for aRow in i["properties"]: #aRow is the actual property name
                 for aCol in range(propListLen):
                     tempProp=propertyList[aCol]
                     tempVal=i["properties"][tempProp]
                     if aRow == tempProp:
-                        # earthquakeList.append[rowCtr, aCol] = tempVal
-                        earthquakeList.append((rowCtr,aCol))=tempVal
-                        # earthquakeList[rowCtr, aCol] = ["place"]
-                        # earthquakeList[rowCtr, aCol] = ["felt"]
-                        # earthquakeList[rowCtr, aCol] = ["tsunami"]
-                        # earthquakeList[rowCtr, aCol] = ["sig"]
-                        # earthquakeList[rowCtr, aCol] = ["type"]
-                        # earthquakeList[rowCtr, aCol] = ["title"]
+                        #how to set row in 2D List
+                        earthquakeList.insert(aCol,tempVal) #this works but puts everything in one row
             rowCtr+=1
-                # propListColCtr+=1
         return earthquakeList
 
 #Calling a class to parse thru the API json and creates a text file of the info for the schedule
