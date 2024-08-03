@@ -1,12 +1,66 @@
 #######################################################################################################
-# This is a scratch area to work through various concepts.
-# If a common concept is coded, then it is moved to a separate file if deemed worth separating.
+# This is a scratch area for figuring things out.
 #######################################################################################################
 import time
 import datetime
 import math
 import re
-#########
+##############################################################
+import urllib.request, urllib.parse, urllib.error
+import json
+
+earthquakeURL =  "http://earthquake.usgs.gov/fdsnws/event/1/query?"
+paramD = dict()
+paramD["format"] = "geojson"                 # the format the data will be in
+paramD["starttime"] = "2019-06-01T00:00:00"  # the minimum date/time that might be retrieved
+paramD["endtime"] = "2019-06-30T23:59:59"    # the maximum date/time that might be retrieved
+paramD["minmag"] = 6                         # the smallest earthquake magnitude to return
+paramD["limit"] = 5                          # the maximum number of earthquakes to return
+                                             # starts with the most recent
+#Builds this: Retrieving http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2019-06-01T00%3A00%3A00&endtime=2019-06-30T23%3A59%3A59&minmag=6&limit=5
+params = urllib.parse.urlencode(paramD)
+print('Retrieving', earthquakeURL+params)
+uh = urllib.request.urlopen(earthquakeURL+params)
+data = uh.read().decode()
+print('Retrieved', len(data), 'characters')
+
+try:
+    js = json.loads(data)
+except:
+    js = None
+        
+if not js or 'type' not in js :
+    print('==== Failure To Retrieve ====')
+    print(data)
+    
+# Output first Record
+print("\nFirst Earthquake")
+lng = js["features"][0]["geometry"]["coordinates"][0] # retrieve the first item in features array
+lat = js["features"][0]["geometry"]["coordinates"][1] # look in "geometry" object
+dep = js["features"][0]["geometry"]["coordinates"][2] # get the first, second, and third coordinates
+print('lng', lng, 'lat', lat, 'depth', dep)
+
+# retrieve the first item in features array, look in the properties object, return the place object
+location = js["features"][0]["properties"]["place"]
+print(location, "\n")
+
+# Loop through entire data set
+print("\nAll Earthquakes")
+count = 0
+for f in js["features"]:
+    lng = f["geometry"]["coordinates"][0]
+    lat = f["geometry"]["coordinates"][1]
+    dep = f["geometry"]["coordinates"][2]
+    print('lng', lng, 'lat', lat, 'depth', dep)
+    location = f["properties"]["place"]
+    print(location, "\n")
+    count = count+1
+print(count)
+
+
+
+
+###############################################################
 # Initialize an empty 2D list
 two_d_list = []
 
