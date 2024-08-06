@@ -50,12 +50,34 @@ class GetEarthquakeInfo:
                 earthquakeList.append(row) #appending the entire row of data once to the list
         return earthquakeList
     
+    def averageMagnitude(self, data, sizeOfReturnedData):
+        totalMag=float(0)
+        for i in range(sizeOfReturnedData):
+            totalMag=totalMag+float(data[i][0])
+        averageMag=totalMag/sizeOfReturnedData
+        return averageMag
+    
+    def anyTsunami(self, data, sizeOfReturnedData):
+        totalTsunamiCount=int(0)
+        for i in range(sizeOfReturnedData):
+            if data[i][3] != 0:
+                totalTsunamiCount=totalTsunamiCount+data[i][3]
+        return totalTsunamiCount
+
 #Calling a class to parse thru the API json and creates a text file of the info for the schedule
 startDate='2024-06-01'
 endDate='2024-06-02'
 a=GetEarthquakeInfo(startDate, endDate)
 eqData=a.getEarthquakeData(a)
-# Now add logic to get the average of the magnitude
+try:
+    sizeOfReturnedData=len(eqData)
+except:
+    print("The data list is empty.")
+    exit
+averageMagnitudeValue=a.averageMagnitude(eqData, sizeOfReturnedData) #Typical Values [-1.0, 10.0]
+print("The average magnitude",format(averageMagnitudeValue, '.2f'))
+tsunamiCnt=a.anyTsunami(eqData, sizeOfReturnedData)
+print("The number of Tsunami's triggered during this timeframe is:",tsunamiCnt)
 # Maybe parse the countries
 # Maybe add a graph of the data?
 time.sleep(1)
