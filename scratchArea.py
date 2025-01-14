@@ -8,7 +8,22 @@ import re
 ##############################################################
 import urllib.request, urllib.parse, urllib.error
 import json
+##############################################################
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
+    def __str__(self):
+        return f"Person(name='{self.name}', age={self.age})"
+
+person = Person("Alice", 30)
+
+print(person) 
+
+time.sleep(1)
+
+##############################################################
 earthquakeURL =  "http://earthquake.usgs.gov/fdsnws/event/1/query?"
 paramD = dict()
 paramD["format"] = "geojson"                 # the format the data will be in
